@@ -6,6 +6,14 @@ A microservices-based job portal application built with Spring Boot, Spring Clou
 
 This project uses a microservices architecture with the following components:
 
+### Frontend Application
+- **Tech Stack**: React 19, TypeScript, Vite
+- **UI Framework**: Radix UI components with Tailwind CSS
+- **Routing**: TanStack Router
+- **Data Fetching**: TanStack Query
+- **Port**: 8080 (default)
+- **Location**: `../job-portal-frontend/`
+
 ### Infrastructure Services
 - **Service Registry (Eureka)**: Port 8761 - Service discovery and registration
 - **Config Server**: Port 8888 - Centralized configuration management
@@ -36,6 +44,7 @@ Each service has its own PostgreSQL database:
 - Java 21 or higher
 - Maven 3.9+
 - Docker and Docker Compose
+- Node.js 18+ and npm (or Bun for faster builds)
 - PostgreSQL client (optional, for direct database access)
 - Git
 
@@ -62,7 +71,26 @@ JWT_SECRET=your_jwt_secret_key
 
 **Note**: For Gmail, you need to use an App-Specific Password, not your regular password.
 
-### 3. Build Docker Images (Optional)
+### 3. Setup Frontend
+Navigate to the frontend directory and install dependencies:
+
+```bash
+cd ../job-portal-frontend
+
+# Using npm
+npm install
+
+# Or using Bun (faster)
+bun install
+```
+
+Create a `.env` file in the frontend directory:
+
+```env
+VITE_API_BASE_URL=http://localhost:5000
+```
+
+### 4. Build Docker Images (Optional)
 If you want to use Docker deployment, build the images first:
 
 ```bash
@@ -76,6 +104,59 @@ docker-compose build company-service
 ```
 
 ## Running the Project
+
+### Frontend Application
+
+The frontend is a React application built with Vite, TanStack Router, and Radix UI.
+
+#### Start Frontend (Development)
+```bash
+cd ../job-portal-frontend
+
+# Using npm
+npm run dev
+
+# Or using Bun (faster)
+bun run dev
+```
+
+The frontend will be available at `http://localhost:8080`
+
+#### Build Frontend (Production)
+```bash
+cd ../job-portal-frontend
+
+# Using npm
+npm run build
+
+# Or using Bun
+bun run build
+```
+
+#### Preview Production Build
+```bash
+cd ../job-portal-frontend
+
+# Using npm
+npm run preview
+
+# Or using Bun
+bun run preview
+```
+
+#### Run Frontend Tests
+```bash
+cd ../job-portal-frontend
+
+# Run E2E tests with Playwright
+npm run test:e2e
+
+# Run E2E tests with UI
+npm run test:e2e:ui
+
+# View test report
+npm run test:e2e:report
+```
 
 ### Option 1: Docker Deployment (Recommended)
 
