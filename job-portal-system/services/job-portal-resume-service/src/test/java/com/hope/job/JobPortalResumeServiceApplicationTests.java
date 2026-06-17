@@ -1,0 +1,13 @@
+package com.hope.job;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class JobPortalResumeServiceApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.hope.job.exception;
+
+public class ResourceNotFoundException extends BaseException {
+    public ResourceNotFoundException(String message) {
+        super(message, 404);
+    }
+
+    public ResourceNotFoundException(String resource, Long id) {
+        super(String.format("%s not found with id: %d", resource, id), 404);
+    }
+
+    public ResourceNotFoundException(String resource, String field, String value) {
+        super(String.format("%s not found with %s: %s", resource, field, value), 404);
+    }
+}
